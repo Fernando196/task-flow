@@ -1,5 +1,6 @@
 import { Component, computed, inject } from '@angular/core';
 import { TaskService } from '../../services/task-service';
+import { Dialog } from '@angular/cdk/dialog';
 
 @Component({
   selector: 'app-task-list',
@@ -13,7 +14,7 @@ export class TaskList {
   );
   taskService: TaskService = inject(TaskService);
 
-  handleChangeTask(task: ITask | null = null) {
+  async handleChangeTask(task: ITask | null = null) {
     this.taskService.addTask(task);
   }
 

@@ -1,6 +1,7 @@
 import { Component, computed, inject } from '@angular/core';
 import { TaskService } from '../../services/task-service';
 import { Dialog } from '@angular/cdk/dialog';
+import { ITask } from '../../interfaces/ITask.interface';
 
 @Component({
   selector: 'app-task-list',

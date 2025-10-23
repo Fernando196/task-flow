@@ -2,6 +2,7 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { TaskService } from '../../services/task-service';
 import { ITaskResponse } from '../../interfaces/ITaskReponse.interface';
 import { firstValueFrom } from 'rxjs';
+import { ITask } from '../../interfaces/ITask.interface';
 @Component({
   selector: 'app-task-flow-layout',
   standalone: false,

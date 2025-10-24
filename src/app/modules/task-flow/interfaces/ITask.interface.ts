@@ -1,3 +1,5 @@
+import { Priority } from '../enums/Priotiry.enum';
+import { StatusTask } from '../enums/StatusTask.enum';
 import { IUser } from './IUser.interface';
 
 export interface ITask {
@@ -7,13 +9,7 @@ export interface ITask {
   startDate: Date;
   endDate: Date;
   createdDate: Date;
-  statusId: IStatusTask;
+  statusId: StatusTask;
   users?: IUser[];
-}
-
-export enum IStatusTask {
-  TODO = 'TODO',
-  IN_PROGRESS = 'IN_PROGRESS',
-  COMPLETED = 'COMPLETED',
-  IN_REVIEW = 'IN_REVIEW',
+  priority?: Priority;
 }

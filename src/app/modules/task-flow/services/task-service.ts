@@ -4,6 +4,8 @@ import { firstValueFrom, Observable } from 'rxjs';
 import { API_URL } from '../../../config/config';
 import { ITaskResponse } from '../interfaces/ITaskReponse.interface';
 import { ITaskService } from './iservices/task-service.interface';
+import { ITask } from '../interfaces/ITask.interface';
+import { mockTasks } from '../../../data/data';
 
 @Injectable({
   providedIn: 'root',
@@ -56,9 +58,7 @@ export class TaskService implements ITaskService {
       });
     });
   }
-  async getTasks() {
-    return await firstValueFrom(
-      this._http.get<ITaskResponse>(`${API_URL}/tasks`)
-    );
+  getTasks() {
+    this.tasks.set(mockTasks);
   }
 }

@@ -2,3 +2,22 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+/* Custom global styles can be added here */
+@theme {
+  --color-primary: #3b82f6; /* Tailwind Blue-500 */
+  --color-secondary: #10b981; /* Tailwind Green-500 */
+  --color-background: #f6f9ff; /* Tailwind Gray-50 */
+  --color-text: #374151; /* Tailwind Gray-700 */
+}
+
+@layer utilities{
+  .scrollbar-hidden{
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hidden::-webkit-scrollbar{
+    display: none;
+  }
+}

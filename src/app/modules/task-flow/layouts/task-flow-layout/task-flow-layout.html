@@ -1,9 +1,14 @@
-<div class="bg-white flex flex-col overflow-hidden h-dvh">
-  <div class="bg-blue-500 h-16 flex justify-between items-center px-4">
-    <h3 class="text-2xl text-white font-bold">Task Flow</h3>
-    <h3 class="text-white text-sm">Complete Task {{ taskCompleted() }}</h3>
+<div class="bg-background flex flex-col overflow-hidden h-dvh">
+  <div
+    class="bg-white h-16 flex justify-between items-center px-4 shadow-sm border-b border-gray-100"
+  >
+    <h3 class="text-2xl text-text">Road Map</h3>
   </div>
-  <div class="flex-1 overflow-hidden p-10 grid grid-cols-4">
-    <app-task-list></app-task-list>
+  <div class="flex-1 overflow-auto pl-8 pt-8 pb-1">
+    @for (status of statusTask(); track $index) {
+    <div class="h-full w-72 inline-block mr-6 align-top">
+      <app-task-list [status]="status"></app-task-list>
+    </div>
+    }
   </div>
 </div>

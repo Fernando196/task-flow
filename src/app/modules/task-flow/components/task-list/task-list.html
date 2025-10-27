@@ -1,36 +1,72 @@
-<div class="flex flex-col h-full overflow-hidden">
-  <div class="flex justify-between p-3">
-    <h2 class="text-xl font-semibold">Tareas</h2>
-    <button matMiniFab (click)="handleChangeTask()">
-      <mat-icon>add</mat-icon>
+<div class="flex flex-col h-full overflow-hidden bg-transparent">
+  <div class="flex justify-between p-3 items-center">
+    <h2 class="text-xl flex items-center gap-2">
+      {{ status }}
+      <span class="text-sm text-gray-400">({{ tasks().length }})</span>
+    </h2>
+    <button class="w-5 h-5 outline-none focus:outline-none cursor-pointer">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g
+          id="SVGRepo_tracerCarrier"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></g>
+        <g id="SVGRepo_iconCarrier">
+          <path
+            d="M7 12C7 13.1046 6.10457 14 5 14C3.89543 14 3 13.1046 3 12C3 10.8954 3.89543 10 5 10C6.10457 10 7 10.8954 7 12Z"
+            fill="#1C274C"
+          ></path>
+          <path
+            d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z"
+            fill="#1C274C"
+          ></path>
+          <path
+            d="M21 12C21 13.1046 20.1046 14 19 14C17.8954 14 17 13.1046 17 12C17 10.8954 17.8954 10 19 10C20.1046 10 21 10.8954 21 12Z"
+            fill="#1C274C"
+          ></path>
+        </g>
+      </svg>
     </button>
   </div>
-  <div
-    class="flex flex-col flex-1 overflow-hidden max-h-[calc(100vh-200px)] px-2"
-  >
-    <div class="overflow-y-auto flex-1 flex flex-col gap-4">
-      <div
-        *ngFor="let task of icompletedTasks(); trackBy: trackById"
-        class="flex justify-between px-2 border-gray-200 border shadow-sm p-4 rounded-xl bg-white"
-      >
-        <div>
-          <div matListItemTitle>{{ task.description }}</div>
-          <div class="text-gray-300" matListItemLine>
-            {{ task.createdDate | date:'dd/MM/yyyy' }}
-          </div>
-        </div>
-        <div class="flex gap-2 items-center">
-          <mat-icon
-            (click)="completedTask(task.id)"
-            class="cursor-pointer !text-blue-300 hover:!text-blue-600"
-            >check</mat-icon
+  <div class="flex flex-col flex-1 overflow-hidden px-2 h-full">
+    <div class="overflow-y-auto flex-1 flex flex-col gap-4 pr-2">
+      @for(task of tasks();track task.id){
+      <app-task-item [task]="task"></app-task-item>
+      }@empty {
+      <div class="flex justify-center items-center flex-col h-full gap-4">
+        <div class="w-10 h-10">
+          <svg
+            viewBox="0 0 312 312"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="#000000"
           >
-          <mat-icon class="cursor-pointer !text-red-300 hover:!text-red-700"
-            >deleted</mat-icon
-          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              <g
+                id="empty_inbox"
+                data-name="empty inbox"
+                transform="translate(-2956.982 -3048.416)"
+              >
+                <path
+                  id="Path_26"
+                  data-name="Path 26"
+                  d="M3268.982,3078.286a29.869,29.869,0,0,0-29.869-29.87H2986.851a29.869,29.869,0,0,0-29.869,29.87v252.259a29.87,29.87,0,0,0,29.869,29.871h252.262a29.87,29.87,0,0,0,29.869-29.871Zm-281.9-4.87H3239.3a5.378,5.378,0,0,1,5.684,5.268v141.732h-73.54a12.038,12.038,0,0,0-12.114,12.025,47.854,47.854,0,0,1-95.668,1.918,11.273,11.273,0,0,0,.162-1.906,12.049,12.049,0,0,0-12.116-12.037h-70.724V3078.684C2980.982,3075.574,2983.97,3073.416,2987.08,3073.416Zm252.218,263H2987.08c-3.11,0-6.1-2.4-6.1-5.514v-86.486h59.426a72.092,72.092,0,0,0,142.13,0h62.444V3330.9A5.577,5.577,0,0,1,3239.3,3336.416Z"
+                  fill="#000000"
+                ></path>
+              </g>
+            </g>
+          </svg>
         </div>
+        <span class="text-gray-400">No tasks found</span>
       </div>
+      }
     </div>
+    <div class="flex justify-between"></div>
   </div>
-  <div class="flex justify-between"></div>
 </div>

@@ -1,20 +1,62 @@
 <div
-  class="flex justify-between px-2 border-gray-200 border shadow-sm p-4 rounded-xl bg-white"
+  class="bg-white shadow-md border-gray-200 border flex p-4 rounded-xl flex-col hover:bg-gray-100 cursor-pointer"
 >
-  <div>
-    <div matListItemTitle>{{ task.description }}</div>
-    <div class="text-gray-300" matListItemLine>
-      {{ task.createdDate | date:'dd/MM/yyyy' }}
+  <div class="flex justify-between w-full">
+    <div class="flex-1">
+      <h3 class="text-base font-semibold truncate max-w-40">
+        {{ task.description }}
+      </h3>
+    </div>
+    <div>
+      <button class="w-5 h-5 outline-none focus:outline-none cursor-pointer">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g
+            id="SVGRepo_tracerCarrier"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></g>
+          <g id="SVGRepo_iconCarrier">
+            <path
+              d="M7 12C7 13.1046 6.10457 14 5 14C3.89543 14 3 13.1046 3 12C3 10.8954 3.89543 10 5 10C6.10457 10 7 10.8954 7 12Z"
+              fill="#1C274C"
+            ></path>
+            <path
+              d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z"
+              fill="#1C274C"
+            ></path>
+            <path
+              d="M21 12C21 13.1046 20.1046 14 19 14C17.8954 14 17 13.1046 17 12C17 10.8954 17.8954 10 19 10C20.1046 10 21 10.8954 21 12Z"
+              fill="#1C274C"
+            ></path>
+          </g>
+        </svg>
+      </button>
     </div>
   </div>
-  <div class="flex gap-2 items-center">
-    <mat-icon
-      (click)="onComplete.emit(task.id)"
-      class="cursor-pointer !text-blue-300 hover:!text-blue-600"
-      >check</mat-icon
-    >
-    <mat-icon class="cursor-pointer !text-red-300 hover:!text-red-700"
-      >deleted</mat-icon
-    >
+  <div class="flex flex-col h-20 overflow-hidden white text-gray-400">
+    {{ task.description }}
+  </div>
+
+  <div class="flex justify-between mt-5">
+    <div class="flex flex-col text-xs">
+      <!-- <span>Initial: {{ task.startDate | date:'shortDate' }}</span>
+      <span>Final: {{ task.endDate | date:'shortDate' }}</span> -->
+      <div
+        class="text-white px-2 py-1 rounded-md uppercase"
+        [class]=" task.priority?.color"
+      >
+        {{ task.priority?.name }}
+      </div>
+    </div>
+    <div class="flex -space-x-3">
+      @for (user of task.users; track $index) {
+      <img
+        class="w-6 h-6 rounded-full border-2 border-white"
+        [src]="user.thumbnail"
+        [alt]="user.name"
+      />
+      }
+    </div>
   </div>
 </div>

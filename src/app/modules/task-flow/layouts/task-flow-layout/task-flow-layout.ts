@@ -1,8 +1,6 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { TaskService } from '../../services/task-service';
-import { ITaskResponse } from '../../interfaces/ITaskReponse.interface';
-import { firstValueFrom } from 'rxjs';
-import { ITask } from '../../interfaces/ITask.interface';
+import { StatusTask } from '../../enums/StatusTask.enum';
 @Component({
   selector: 'app-task-flow-layout',
   standalone: false,
@@ -17,19 +15,9 @@ export class TaskFlowLayout {
     () => this.taskService.tasks().filter((t) => t.completed).length
   );
 
-  constructor() {
-    this.getTaks();
-  }
+  statusTask = signal<StatusTask[]>(Object.values(StatusTask));
 
-  async getTaks() {
-    try {
-      this.isLoading.set(true);
-      const { data, count, succes } = await this.taskService.getTasks();
-      this.taskService.tasks.set(data as ITask[]);
-    } catch (err) {
-      console.log(err);
-    } finally {
-      this.isLoading.set(false);
-    }
+  constructor() {
+    this.taskService.getTasks();
   }
 }

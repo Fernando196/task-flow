@@ -11,9 +11,11 @@ import { MatListModule } from '@angular/material/list';
 import { TaskForm } from './components/task-form/task-form';
 import { DialogModule } from '@angular/cdk/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { TaskMenu } from './components/task-menu/task-menu';
+import { SharedModule } from '../shared/shared-module';
 
 @NgModule({
-  declarations: [TaskFlowLayout, TaskItem, TaskList, TaskForm],
+  declarations: [TaskFlowLayout, TaskItem, TaskList, TaskForm, TaskMenu],
   imports: [
     CommonModule,
     TaskFlowRoutingModule,
@@ -22,6 +24,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatListModule,
     DialogModule,
     MatSnackBarModule,
+    SharedModule,
   ],
 })
 export class TaskFlowModule {}

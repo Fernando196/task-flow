@@ -1,0 +1,16 @@
+<div class="bg-white shadow-md border border-gray-200 rounded-md z-10 w-40">
+  <ul>
+    <li
+      class="px-4 py-2 hover:bg-gray-100"
+      (click)="onClickOption.emit('edit')"
+    >
+      Editar
+    </li>
+    <li
+      class="px-4 py-2 hover:bg-gray-100"
+      (click)="onClickOption.emit('delete')"
+    >
+      Eliminar
+    </li>
+  </ul>
+</div>

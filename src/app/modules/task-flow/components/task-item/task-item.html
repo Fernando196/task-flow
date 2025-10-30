@@ -1,25 +1,29 @@
 <div
   class="bg-white shadow-md border-gray-200 border flex p-4 rounded-xl flex-col hover:bg-gray-100 cursor-pointer"
+  [attr.data-task-id]="task.id"
 >
   <div class="flex justify-between w-full">
     <div class="flex-1">
       <h3 class="text-base font-semibold truncate max-w-40">
-        {{ task.description }}
+        {{ task.title }}
       </h3>
     </div>
     <div>
       <div class="relative inline-block text-left">
         <button
           class="w-6 h-6 text-gray-500 outline-none focus:outline-none cursor-pointer"
-          (click)="toggleMenu()"
+          data-menu-button
+          (click)="toggleMenu($event)"
         >
           <app-map-icon nameIcon="menu"></app-map-icon>
         </button>
-        @if (openMenu()) {
-        <app-task-menu
-          (onClickOption)="handleChangeOption($event)"
-          class="absolute right-0"
-        ></app-task-menu>
+        @if (isMenuOpen()) {
+        <div class="task-menu-container">
+          <app-task-menu
+            (onClickOption)="handleChangeOption($event)"
+            class="absolute right-0"
+          ></app-task-menu>
+        </div>
         }
       </div>
     </div>

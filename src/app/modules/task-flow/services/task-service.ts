@@ -32,10 +32,11 @@ export class TaskService implements ITaskService {
       this._http.post<ITaskResponse>(`${API_URL}/tasks`, task)
     );
   }
-  async deleteTask(id: number) {
-    return await firstValueFrom(
-      this._http.delete<ITaskResponse>(`${API_URL}/tasks/${id}`)
-    );
+  deleteTask(id: number) {
+    this.tasks.update((tasks) => tasks.filter((t) => t.id !== id));
+    // return await firstValueFrom(
+    //   this._http.delete<ITaskResponse>(`${API_URL}/tasks/${id}`)
+    // );
   }
   async updateTask(id: number, updateTask: ITask) {
     const completedChange = this.tasks().find((t) => t.id === id);

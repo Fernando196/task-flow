@@ -7,6 +7,7 @@ import {
   inject,
   computed,
   HostListener,
+  output,
 } from '@angular/core';
 import { ITask } from '../../interfaces/ITask.interface';
 import { TaskMenuService } from '../../services/task-menu-service';
@@ -19,7 +20,7 @@ import { TaskMenuService } from '../../services/task-menu-service';
 })
 export class TaskItem {
   @Input() task!: ITask;
-  @Output() onComplete = new EventEmitter<number>();
+  onSelectedOption = output<{ option: string; id: number }>();
 
   private taskMenuService = inject(TaskMenuService);
 
@@ -41,20 +42,7 @@ export class TaskItem {
     // Cerrar el menú al seleccionar una opción
     this.taskMenuService.closeMenu();
 
-    // Aquí puedes manejar las diferentes opciones
-    switch (option) {
-      case 'complete':
-        this.onComplete.emit(this.task.id);
-        break;
-      case 'edit':
-        // Lógica para editar
-        break;
-      case 'delete':
-        // Lógica para eliminar
-        break;
-      default:
-        break;
-    }
+    this.onSelectedOption.emit({ option, id: this.task.id });
   }
 
   // Listener global para cerrar menús al hacer clic fuera

@@ -16,4 +16,10 @@ export class TaskList {
   tasks = computed<ITask[]>(() =>
     this.taskService.tasks().filter((t) => t.statusId === this.status)
   );
+
+  handleChangeOption(event: { option: string; id: number }) {
+    if (event.option === 'delete') {
+      this.taskService.deleteTask(event.id);
+    }
+  }
 }

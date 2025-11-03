@@ -22,4 +22,10 @@ export class TaskList {
       this.taskService.deleteTask(event.id);
     }
   }
+
+  taskCount = computed(() => this.tasks().length);
+
+  highPriorityTasks = computed(() => {
+    return this.tasks().filter((t) => t.priority?.name === 'high' ).length;
+  });
 }

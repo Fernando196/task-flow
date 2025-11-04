@@ -17,12 +17,6 @@ export class TaskList {
     this.taskService.tasks().filter((t) => t.statusId === this.status)
   );
 
-  handleChangeOption(event: { option: string; id: number }) {
-    if (event.option === 'delete') {
-      this.taskService.deleteTask(event.id);
-    }
-  }
-
   taskCount = computed(() => this.tasks().length);
 
   highPriorityTasks = computed(() => {

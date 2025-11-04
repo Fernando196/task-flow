@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MapIcon } from './components/icon/map-icon/map-icon';
 import { IconMenu } from './components/icon/icon-menu/icon-menu';
+import { ModalContainer } from './components/modal/modal-container/modal-container';
 
 @NgModule({
-  declarations: [MapIcon, IconMenu],
-  exports: [MapIcon],
+  declarations: [MapIcon, IconMenu, ModalContainer],
+  exports: [MapIcon,ModalContainer],
   imports: [CommonModule],
 })
 export class SharedModule {}

@@ -1,6 +1,7 @@
 <div
   class="bg-white shadow-md border-gray-200 border flex p-4 rounded-xl flex-col hover:bg-gray-100 cursor-pointer"
   [attr.data-task-id]="task.id"
+  (click)="handleOpenEdit()"
 >
   <div class="flex justify-between w-full">
     <div class="flex-1">

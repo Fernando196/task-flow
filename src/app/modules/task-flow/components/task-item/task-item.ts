@@ -11,6 +11,9 @@ import {
 } from '@angular/core';
 import { ITask } from '../../interfaces/ITask.interface';
 import { TaskMenuService } from '../../services/task-menu-service';
+import { TaskService } from '../../services/task-service';
+import { ModalService } from '../../../shared/services/modal';
+import { TaskForm } from '../task-form/task-form';
 
 @Component({
   selector: 'app-task-item',
@@ -19,6 +22,8 @@ import { TaskMenuService } from '../../services/task-menu-service';
   styleUrl: './task-item.css',
 })
 export class TaskItem {
+  taskService: TaskService = inject(TaskService);
+  modalService: ModalService = inject(ModalService);
   @Input() task!: ITask;
   onSelectedOption = output<{ option: string; id: number }>();
 
@@ -42,7 +47,17 @@ export class TaskItem {
     // Cerrar el menú al seleccionar una opción
     this.taskMenuService.closeMenu();
 
-    this.onSelectedOption.emit({ option, id: this.task.id });
+    // this.onSelectedOption.emit({ option, id: this.task.id });
+    if (option === 'delete') {
+      this.taskService.deleteTask(this.task.id);
+    }
+  }
+
+  handleOpenEdit() {
+    const ref = this.modalService.open(TaskForm, { pruebas: 'Hola' });
+    ref.afterClosed().subscribe((result) => {
+      console.log('Modal closed with result:', result);
+    });
   }
 
   // Listener global para cerrar menús al hacer clic fuera

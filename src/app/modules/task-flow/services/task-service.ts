@@ -27,34 +27,27 @@ export class TaskService implements ITaskService {
     });
   }
 
-  async addTask(task: ITask | null) {
-    return await firstValueFrom(
-      this._http.post<ITaskResponse>(`${API_URL}/tasks`, task)
-    );
+  getLastTaskId(): number {
+    return this.tasks().length > 0
+      ? Math.max(...this.tasks().map((t) => t.id))
+      : 0;
+  }
+
+  addTask(task: ITask) {
+    const lastId = this.getLastTaskId();
+    task.id = lastId + 1;
+    this.tasks.update((tasks) => [...tasks, task]);
   }
   deleteTask(id: number) {
     this.tasks.update((tasks) => tasks.filter((t) => t.id !== id));
-    // return await firstValueFrom(
-    //   this._http.delete<ITaskResponse>(`${API_URL}/tasks/${id}`)
-    // );
   }
-  async updateTask(id: number, updateTask: ITask) {
-    const completedChange = this.tasks().find((t) => t.id === id);
-    if (
-      completedChange &&
-      JSON.stringify(completedChange) !== JSON.stringify(updateTask)
-    ) {
-      await firstValueFrom(
-        this._http.put<ITaskResponse>(`${API_URL}/tasks/${id}`, updateTask)
-      );
-    }
-
+  updateTask(id: number, updateTask: ITask) {
     this.tasks.update((tasks) => {
       return tasks.map((t) => {
         if (t.id !== id) return t;
         return {
           ...t,
-          completed: true,
+          ...updateTask,
         };
       });
     });

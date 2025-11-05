@@ -13,6 +13,7 @@ import { DialogModule } from '@angular/cdk/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TaskMenu } from './components/task-menu/task-menu';
 import { SharedModule } from '../shared/shared-module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [TaskFlowLayout, TaskItem, TaskList, TaskForm, TaskMenu],
@@ -25,6 +26,7 @@ import { SharedModule } from '../shared/shared-module';
     DialogModule,
     MatSnackBarModule,
     SharedModule,
+    ReactiveFormsModule,
   ],
 })
 export class TaskFlowModule {}

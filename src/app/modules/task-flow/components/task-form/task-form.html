@@ -1,3 +1,81 @@
-<div class="w-[500px] h-[500px] bg-white rounded-lg p-6">
-  <h1>Pruebas</h1>
+<div class="w-[350px] h-max bg-white rounded-lg px-6 py-3 text-xs">
+  <div class="text-base flex pb-2 justify-between items-center">
+    <span>Task</span>
+    <button class="h-4 w-4 cursor-pointer" (click)="close()">
+      <app-map-icon nameIcon="close"></app-map-icon>
+    </button>
+  </div>
+  <form [formGroup]="formTask" class="flex flex-col gap-4">
+    <div class="flex flex-col gap-2">
+      <label for="title" class="text-sm">Title</label>
+      <input
+        id="title"
+        formControlName="title"
+        type="text"
+        class="w-full px-4 py-2 rounded-md border border-gray-300 focus:border-blue-500 outline-none"
+      />
+    </div>
+    <div class="flex flex-col gap-2">
+      <label class="text-sm" for="description">Description</label>
+      <textarea
+        id="description"
+        formControlName="description"
+        type="text"
+        [rows]="5"
+        class="w-full px-4 py-2 rounded-md border border-gray-300 focus:border-blue-500 outline-none"
+      ></textarea>
+    </div>
+    <div class="flex flex-col gap-2">
+      <label for="startDate" class="text-sm">Start Date</label>
+      <input
+        formControlName="startDate"
+        id="startDate"
+        type="date"
+        class="w-full px-4 py-2 rounded-md border border-gray-300 focus:border-blue-500 outline-none"
+      />
+    </div>
+    <div class="flex flex-col gap-2">
+      <label for="endDate" class="text-sm">End Date</label>
+      <input
+        id="endDate"
+        formControlName="endDate"
+        type="date"
+        class="w-full px-4 py-2 rounded-md border border-gray-300 focus:border-blue-500 outline-none"
+      />
+    </div>
+    <div class="flex flex-col">
+      <label class="text-sm">Priority</label>
+      <div class="flex flex-wrap gap-4 mt-3">
+        @for (priority of taskPriorities; track priority.id) {
+        <button
+          type="button"
+          class="rounded-md px-2 py-2 uppercase cursor-pointer"
+          [class]="formTask.get('priority')?.value?.id === priority.id ? (priority.color + ' text-white') : 'bg-gray-200'"
+          (click)="selectPriority(priority)"
+        >
+          {{ priority.name }}
+        </button>
+        }
+      </div>
+    </div>
+    <div class="flex justify-end gap-4">
+      <button
+        (click)="close()"
+        class="px-4 py-1 bg-red-300 rounded-sm text-white cursor-pointer"
+      >
+        Cancel
+      </button>
+      <button
+        type="button"
+        class="px-4 py-2 rounded-sm focus:outline-none cursor-pointer text-white"
+        [ngClass]="{
+          'opacity-50 cursor-not-allowed bg-gray-500': formTask.invalid,
+          'bg-blue-500  hover:bg-blue-600 ': formTask.valid
+        }"
+        (click)="saveTask()"
+      >
+        Save
+      </button>
+    </div>
+  </form>
 </div>

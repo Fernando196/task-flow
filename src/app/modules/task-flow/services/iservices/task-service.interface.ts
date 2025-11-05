@@ -6,7 +6,7 @@ import { ITask } from '../../interfaces/ITask.interface';
 export interface ITaskService {
   tasks: WritableSignal<ITask[]>;
   getTasks(): void;
-  addTask(task: ITask | null): Promise<ITaskResponse>;
+  addTask(task: ITask | null): void;
   deleteTask(id: number): void;
   updateTask(id: number, task: ITask): void;
 }

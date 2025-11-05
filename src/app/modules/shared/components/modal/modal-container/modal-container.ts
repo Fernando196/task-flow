@@ -19,10 +19,6 @@ export class ModalContainer implements AfterViewInit {
   private modalService = inject(ModalService);
 
   ngAfterViewInit() {
-    console.log(
-      'ModalContainer initialized, viewContainer:',
-      this.viewContainer
-    );
     this.modalService.registerContainer(this);
   }
 

@@ -22,7 +22,6 @@ export class ModalService {
   ) {}
 
   registerContainer(container: ModalContainer) {
-    console.log('Registering modal container:', container);
     this.container = container;
   }
 
@@ -30,9 +29,6 @@ export class ModalService {
     component: Type<T>,
     data?: Partial<any>
   ): ModalRef<T, R> {
-    console.log('Opening modal, container:', this.container);
-    console.log('Container viewContainer:', this.container?.viewContainer);
-
     if (!this.container) {
       throw new Error(
         'Modal container not registered. Make sure <app-modal-container> is in your app.component.html'
@@ -49,8 +45,6 @@ export class ModalService {
     });
 
     try {
-      console.log('Creating component:', component);
-
       // Create custom injector that provides ModalRef
       const componentInjector = Injector.create({
         providers: [
@@ -68,7 +62,6 @@ export class ModalService {
           injector: componentInjector,
         }
       );
-      console.log('Component created successfully:', componentRef);
 
       // Asignar data al componente
       Object.assign(componentRef.instance, data ?? {});

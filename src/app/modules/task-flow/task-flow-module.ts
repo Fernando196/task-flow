@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { TaskFlowRoutingModule } from './task-flow-routing-module';
-import { TaskFlowLayout } from './layouts/task-flow-layout/task-flow-layout';
+import { TaskFlowView } from './views/task-flow-view/task-flow-view';
 import { TaskItem } from './components/task-item/task-item';
 import { TaskList } from './components/task-list/task-list';
 import { MatIconModule } from '@angular/material/icon';
@@ -16,7 +16,7 @@ import { SharedModule } from '../shared/shared-module';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [TaskFlowLayout, TaskItem, TaskList, TaskForm, TaskMenu],
+  declarations: [TaskFlowView, TaskItem, TaskList, TaskForm, TaskMenu],
   imports: [
     CommonModule,
     TaskFlowRoutingModule,

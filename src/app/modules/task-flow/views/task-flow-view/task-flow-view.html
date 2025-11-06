@@ -1,0 +1,9 @@
+<div class="overflow-x-auto overflow-y-hidden pl-8 pt-8 pb-1">
+  <div class="inline-flex h-full">
+    @for (status of statusTask(); track $index) {
+    <div class="h-full w-72 inline-block mr-6 align-top">
+      <app-task-list [status]="status"></app-task-list>
+    </div>
+    }
+  </div>
+</div>

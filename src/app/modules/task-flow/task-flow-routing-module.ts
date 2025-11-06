@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TaskFlowLayout } from './layouts/task-flow-layout/task-flow-layout';
+import { TaskFlowView } from './views/task-flow-view/task-flow-view';
 
 const routes: Routes = [
   {
     path: '',
-    component: TaskFlowLayout,
+    component: TaskFlowView,
   },
 ];
 

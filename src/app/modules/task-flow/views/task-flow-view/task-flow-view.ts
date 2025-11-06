@@ -2,12 +2,12 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { TaskService } from '../../services/task-service';
 import { StatusTask } from '../../enums/StatusTask.enum';
 @Component({
-  selector: 'app-task-flow-layout',
+  selector: 'app-task-flow-view',
   standalone: false,
-  templateUrl: './task-flow-layout.html',
-  styleUrl: './task-flow-layout.css',
+  templateUrl: './task-flow-view.html',
+  styleUrl: './task-flow-view.css',
 })
-export class TaskFlowLayout {
+export class TaskFlowView {
   isLoading = signal<boolean>(false);
   taskService: TaskService = inject(TaskService);
 

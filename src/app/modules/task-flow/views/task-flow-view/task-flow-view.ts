@@ -1,6 +1,6 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { TaskService } from '../../services/task-service';
-import { StatusTask } from '../../enums/StatusTask.enum';
+import { TaskService } from '../../core/services/task-service';
+import { StatusTask } from '../../core/enums/StatusTask.enum';
 @Component({
   selector: 'app-task-flow-view',
   standalone: false,

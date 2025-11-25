@@ -1,7 +1,7 @@
-import { StatusTask } from '../modules/task-flow/enums/StatusTask.enum';
-import { ITask } from '../modules/task-flow/interfaces/ITask.interface';
+import { StatusTask } from '../modules/task-flow/core/enums/StatusTask.enum';
 import { mockUsers } from './users';
 import { mockPriorities } from './priority';
+import { ITask } from '../modules/task-flow/core/interfaces/ITask.interface';
 
 export const mockTasks: ITask[] = [
   {

@@ -1,4 +1,4 @@
-import { IUser } from '../modules/task-flow/interfaces/IUser.interface';
+import { IUser } from '../modules/task-flow/core/interfaces/IUser.interface';
 
 export const mockUsers: IUser[] = [
   {

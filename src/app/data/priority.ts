@@ -1,4 +1,4 @@
-import { Priority } from '../modules/task-flow/interfaces/ITask.interface';
+import { Priority } from '../modules/task-flow/core/interfaces/ITask.interface';
 
 export const mockPriorities: Priority[] = [
   {

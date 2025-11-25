@@ -9,9 +9,9 @@ import {
   HostListener,
   output,
 } from '@angular/core';
-import { ITask } from '../../interfaces/ITask.interface';
-import { TaskMenuService } from '../../services/task-menu-service';
-import { TaskService } from '../../services/task-service';
+import { ITask } from '../../core/interfaces/ITask.interface';
+import { TaskMenuService } from '../../core/services/task-menu-service';
+import { TaskService } from '../../core/services/task-service';
 import { ModalService } from '../../../shared/services/modal';
 import { TaskForm } from '../task-form/task-form';
 

@@ -1,11 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { firstValueFrom, Observable } from 'rxjs';
-import { API_URL } from '../../../config/config';
 import { ITaskResponse } from '../interfaces/ITaskReponse.interface';
 import { ITaskService } from './iservices/task-service.interface';
 import { ITask } from '../interfaces/ITask.interface';
-import { mockTasks } from '../../../data/data';
+import { mockTasks } from '../../../../data/data';
 
 @Injectable({
   providedIn: 'root',

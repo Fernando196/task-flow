@@ -1,10 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ModalRef } from '../../../shared/components/modal/modal-ref';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { StatusTask } from '../../enums/StatusTask.enum';
+import { StatusTask } from '../../core/enums/StatusTask.enum';
 import { mockPriorities } from '../../../../data/priority';
-import { ITask, Priority } from '../../interfaces/ITask.interface';
-import { TaskService } from '../../services/task-service';
+import { ITask, Priority } from '../../core/interfaces/ITask.interface';
+import { TaskService } from '../../core/services/task-service';
 
 @Component({
   selector: 'app-task-form',

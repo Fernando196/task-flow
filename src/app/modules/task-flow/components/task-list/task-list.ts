@@ -1,7 +1,6 @@
 import { Component, computed, inject, Input } from '@angular/core';
-import { TaskService } from '../../services/task-service';
-import { Dialog } from '@angular/cdk/dialog';
-import { ITask } from '../../interfaces/ITask.interface';
+import { TaskService } from '../../core/services/task-service';
+import { ITask } from '../../core/interfaces/ITask.interface';
 
 @Component({
   selector: 'app-task-list',
@@ -20,6 +19,6 @@ export class TaskList {
   taskCount = computed(() => this.tasks().length);
 
   highPriorityTasks = computed(() => {
-    return this.tasks().filter((t) => t.priority?.name === 'high' ).length;
+    return this.tasks().filter((t) => t.priority?.name === 'high').length;
   });
 }

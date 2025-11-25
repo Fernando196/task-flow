@@ -1,46 +1,7 @@
 <div class="bg-background flex flex-col overflow-y-hidden h-dvh">
-  <div
-    class="bg-white h-16 flex justify-between items-center px-4 shadow-sm border-b border-gray-100"
-  >
-    <h3 class="text-2xl text-text">Road Map</h3>
-  </div>
+  <app-navbar></app-navbar>
   <div class="flex relative">
-    <nav class="bg-white border-r border-r-gray-100 shadow-md px-5 w-52 h-dvh">
-      <ul class="mt-10 space-y-4 w-full">
-        <li
-          class="text-sm w-full bg-blue-300 text-white rounded-xl text-center px-5 py-2"
-        >
-          Dashboard
-        </li>
-        <li
-          class="text-sm w-full bg-blue-300 text-white rounded-xl text-center px-5 py-2"
-        >
-          Road Map
-        </li>
-        <li
-          class="text-sm w-full bg-blue-300 text-white rounded-xl text-center px-5 py-2"
-        >
-          Users
-        </li>
-        <li
-          class="text-sm w-full bg-blue-300 text-white rounded-xl text-center px-5 py-2"
-        >
-          Settings
-        </li>
-        <li
-          class="text-sm w-full bg-blue-300 text-white rounded-xl text-center px-5 py-2"
-        >
-          Help
-        </li>
-      </ul>
-      <div class="absolute bottom-0 h-10">
-        <button
-          class="w-full text-sm bg-red-500 text-white rounded-xl text-center px-5 py-2 mb-4"
-        >
-          Logout
-        </button>
-      </div>
-    </nav>
+    <app-sidebar-menu></app-sidebar-menu>
     <main class="flex-1 overflow-hidden">
       <router-outlet></router-outlet>
     </main>

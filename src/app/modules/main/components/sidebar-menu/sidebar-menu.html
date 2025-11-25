@@ -1,0 +1,22 @@
+<nav
+  class="bg-white border-r border-r-gray-100 shadow-md px-5 w-52 h-dvh relative"
+>
+  <ul class="space-y-4 w-full pt-10">
+    @for (option of optionsMenu; track $index) {
+    <li
+      [routerLink]="option.route"
+      class="!text-gray-400 flex items-center space-x-3 p-3 rounded-xl hover:bg-gray-100 hover:!text-primary cursor-pointer"
+    >
+      <mat-icon>{{ option.icon }}</mat-icon>
+      <a>{{ option.label }}</a>
+    </li>
+    }
+  </ul>
+  <div class="absolute bottom-20 h-10">
+    <button
+      class="text-sm bg-gray-400 rounded-sm text-white text-center px-8 py-2"
+    >
+      Logout
+    </button>
+  </div>
+</nav>

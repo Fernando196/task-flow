@@ -1,0 +1,76 @@
+<div class="bg-white rounded-lg shadow-md p-6">
+  <h2 class="text-xl font-semibold text-gray-800 mb-6">
+    Distribución por Prioridad
+  </h2>
+
+  <div class="flex items-center justify-center gap-8">
+    <!-- Gráfica de Dona SVG -->
+    <div class="relative">
+      <svg class="w-64 h-64 transform -rotate-90">
+        <circle
+          cx="128"
+          cy="128"
+          r="70"
+          fill="none"
+          stroke="#e5e7eb"
+          stroke-width="40"
+        ></circle>
+
+        @for (data of priorityData(); track data.name; let i = $index) {
+        <circle
+          cx="128"
+          cy="128"
+          r="70"
+          fill="none"
+          [attr.stroke]="data.color.replace('bg-', '#')"
+          stroke-width="40"
+          [attr.stroke-dasharray]="getStrokeDasharray(data.percentage)"
+          [attr.stroke-dashoffset]="getStrokeDashoffset(i)"
+          class="transition-all duration-500 ease-out hover:stroke-width-45"
+          [style.stroke]="
+            data.color === 'bg-red-300'
+              ? '#fca5a5'
+              : data.color === 'bg-yellow-300'
+              ? '#fcd34d'
+              : '#86efac'
+          "
+        >
+          <title>{{ data.name }}: {{ data.count }} tareas</title>
+        </circle>
+        }
+      </svg>
+
+      <!-- Centro con total -->
+      <div
+        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center"
+      >
+        <p class="text-4xl font-bold text-gray-800">{{ totalTasks() }}</p>
+        <p class="text-sm text-gray-500">Total Tareas</p>
+      </div>
+    </div>
+
+    <!-- Leyenda -->
+    <div class="flex flex-col gap-4">
+      @for (data of priorityData(); track data.name) {
+      <div class="flex items-center gap-3 group cursor-pointer">
+        <div
+          class="w-6 h-6 rounded transition-transform group-hover:scale-110"
+          [style.backgroundColor]="
+            data.color === 'bg-red-300'
+              ? '#fca5a5'
+              : data.color === 'bg-yellow-300'
+              ? '#fcd34d'
+              : '#86efac'
+          "
+        ></div>
+        <div>
+          <p class="font-semibold text-gray-800 capitalize">{{ data.name }}</p>
+          <p class="text-sm text-gray-600">
+            {{ data.count }} tareas ({{ data.percentage | number: '1.1-1' }}%)
+          </p>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</div>

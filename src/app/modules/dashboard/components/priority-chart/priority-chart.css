@@ -1,0 +1,9 @@
+/* Priority Chart Styles */
+
+svg circle {
+  transition: all 0.3s ease;
+}
+
+svg circle:hover {
+  filter: brightness(1.1);
+}

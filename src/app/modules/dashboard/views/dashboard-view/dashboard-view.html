@@ -5,6 +5,13 @@
     <p class="text-gray-600 mt-2">Vista general de tareas y métricas</p>
   </div>
 
+  <!-- Date Filter -->
+  <div class="mb-6">
+    <app-date-filter
+      (onFilterChange)="handleFilterChange($event)"
+    ></app-date-filter>
+  </div>
+
   <!-- KPI Cards -->
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
     <!-- Total Tasks -->
